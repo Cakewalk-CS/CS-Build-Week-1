@@ -1,0 +1,7 @@
+- pip install django
+- pip install python-decouple
+- pip install djangorestframework
+- pip install django-heroku
+- pip install django-cors-headers
+- pip install django-rest-auth
+- pip install django-allauth
