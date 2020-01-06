@@ -3,3 +3,4 @@ from .models import Room, Player
 
 admin.site.register(Room)
 admin.site.register(Player)
+
