@@ -28,6 +28,15 @@ def initialize(request):
     'players':players}, 
     safe = True)
 
+# GET all rooms
+@api_view(["GET"])
+def rooms(request):
+    rooms = Room.objects.all()
+    result = []
+    for room in rooms.values():
+        result.append(room)
+    return JsonResponse({
+        'rooms': result}, safe = True)
 
 # @csrf_exempt
 @api_view(["POST"])
