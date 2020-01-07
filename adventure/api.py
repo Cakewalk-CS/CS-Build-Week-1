@@ -20,13 +20,19 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse({
+    'uuid': uuid, 
+    'name':player.user.username, 
+    'title':room.title, 
+    'description':room.description, 
+    'players':players}, 
+    safe = True)
 
 
 # @csrf_exempt
 @api_view(["POST"])
 def move(request):
-    dirs={"n": "north", "s": "south", "e": "east", "w": "west"}
+    dirs = {"n": "north", "s": "south", "e": "east", "w": "west"}
     reverse_dirs = {"n": "south", "s": "north", "e": "west", "w": "east"}
     player = request.user.player
     player_id = player.id
@@ -44,8 +50,8 @@ def move(request):
     elif direction == "w":
         nextRoomID = room.w_to
     if nextRoomID is not None and nextRoomID > 0:
-        nextRoom = Room.objects.get(id=nextRoomID)
-        player.currentRoom=nextRoomID
+        nextRoom = Room.objects.get(id = nextRoomID)
+        player.currentRoom = nextRoomID
         player.save()
         players = nextRoom.playerNames(player_id)
         currentPlayerUUIDs = room.playerUUIDs(player_id)
@@ -54,14 +60,27 @@ def move(request):
         #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
         # for p_uuid in nextPlayerUUIDs:
         #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
-        return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'players':players, 'error_msg':""}, safe=True)
+        return JsonResponse({
+            'name':player.user.username, 
+            'title':nextRoom.title, 
+            'description':nextRoom.description, 
+            'players':players, 
+            'error_msg':""}, 
+            safe = True)
     else:
         players = room.playerNames(player_id)
-        return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'error_msg':"You cannot move that way."}, safe=True)
+        return JsonResponse({
+            'name':player.user.username, 
+            'title':room.title, 
+            'description':room.description, 
+            'players':players, 
+            'error_msg':"You cannot move that way."}, 
+            safe = True)
 
 
+# STRETCH GOAL
 @csrf_exempt
 @api_view(["POST"])
 def say(request):
     # IMPLEMENT
-    return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
+    return JsonResponse({'error':"Not yet implemented"}, safe = True, status=500)
