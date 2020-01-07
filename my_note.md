@@ -15,3 +15,8 @@ Ann's path for Heroku
 - `git init` create gitignore 
 - 
 
+- `herohu addons` check if we have heroku database
+- `heroku run python manage.py migrate` migrate to posgres
+- `heroku run bash`
+- `python manage.py createsuperuser` 
+- `python manage.py shell` do the magic
