@@ -71,8 +71,4 @@ def say(request):
 @api_view(["GET"])
 def rooms(request):
     room = Room.objects.all().values()
-    return JsonResponse({'title': list(room) }, safe=True)
-
-
-# queryset = YourModel.objects.filter(some__filter="some value").values()
-# return JsonResponse({"models_to_return": list(queryset)})
+    return JsonResponse({'rooms': list(room) }, safe=True)
