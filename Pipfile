@@ -17,6 +17,7 @@ django-rest-api = "*"
 whitenoise = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
