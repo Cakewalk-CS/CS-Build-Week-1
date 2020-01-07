@@ -65,3 +65,14 @@ def move(request):
 def say(request):
     # IMPLEMENT
     return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
+
+
+@csrf_exempt
+@api_view(["GET"])
+def rooms(request):
+    room = Room.objects.all().values()
+    return JsonResponse({'title': list(room) }, safe=True)
+
+
+# queryset = YourModel.objects.filter(some__filter="some value").values()
+# return JsonResponse({"models_to_return": list(queryset)})

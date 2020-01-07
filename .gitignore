@@ -13,3 +13,7 @@ local_settings.py
 db.sqlite3
 
 tmp
+
+node_modules/
+my_note.md
+package-lock.json
