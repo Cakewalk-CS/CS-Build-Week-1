@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['text-adv-game.herokuapp.com']
 
 # Application definition
 
@@ -63,8 +63,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'adv_project.urls'
 
 TEMPLATES = [
@@ -128,6 +129,7 @@ REST_FRAMEWORK = {
     ),
 }
 
+
 CORS_ORIGIN_ALLOW_ALL=True
 
 # Internationalization
@@ -147,7 +149,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 
 import django_heroku
 django_heroku.settings(locals())
