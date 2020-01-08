@@ -7,7 +7,7 @@
 - pip install django-allauth
 
 
-## Deploy on Heroko
+## Deploy on Heroku
 Ann's path for Heroku
 - `./node_modules/heroku/bin/run`
 - run `pip freeze` and coppy everything
@@ -20,3 +20,10 @@ Ann's path for Heroku
 - `heroku run bash`
 - `python manage.py createsuperuser` 
 - `python manage.py shell` do the magic
+
+
+
+player token
+
+curl -X POST -H 'Authorization: Token uJvFvtUztYBzefdPmSVjIJKFEYoVM6h5R4SVQ83Ftb15HR6OWIlNgldTGP43yj78
+' -H "Content-Type: application/json" -d '{"direction":"n"}' text-adv-game.herokuapp.com/api/adv/move/
