@@ -92,9 +92,6 @@ def move(request):
 @api_view(["POST"])
 def say(request):
     # IMPLEMENT
-<<<<<<< HEAD
-    return JsonResponse({'error':"Not yet implemented"}, safe = True, status=500)
-=======
     return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
 
 
@@ -103,4 +100,3 @@ def say(request):
 def rooms(request):
     room = Room.objects.all().values()
     return JsonResponse({'rooms': list(room) }, safe=True)
->>>>>>> b8377438443f94d43db8b8e3eb255e0f91cf9a0e
