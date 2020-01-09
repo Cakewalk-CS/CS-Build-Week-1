@@ -25,10 +25,8 @@ Ann's path for Heroku
 
 player token
 
-curl -X POST -H 'Authorization: Token 77f37e15a8efff03643d38f2a3491a2036a28142' -H "Content-Type: application/json" -d '{"direction":"n"}' localhost:8000/api/adv/move/
+curl -X POST -H 'Authorization: Token 77f37e15a8efff03643d38f2a3491a2036a28142' -H "Content-Type: application/json" -d '{"direction":"e"}' localhost:8000/api/adv/move/
 
 
 text-adv-game.herokuapp.com/api/adv/move/
 
-
-localhost:8000/api/adv/move/
